@@ -17,19 +17,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-<div style="max-width: 400px; margin: 30px auto; padding: 2rem; background: #fff; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-family: 'Segoe UI', Roboto, sans-serif;">
-    <h2 style="text-align: center; margin: 0 0 1.5rem 0; color: #2d3748; font-size: 1.5rem; font-weight: 600;">Password Recovery</h2>
-    
-    <form method="post">
-        <div style="margin-bottom: 1.5rem;">
-            <label style="display: block; margin-bottom: 0.5rem; color: #4a5568; font-size: 0.9rem; font-weight: 500;">
-                Enter your email:
-            </label>
-            <input name="email" type="email" style="width: 100%; padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 1rem; transition: border-color 0.2s;" placeholder="your@email.com">
-        </div>
-        
-        <button type="submit" style="width: 100%; padding: 0.75rem; background: #3182ce; color: white; border: none; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s;">
-            Recover Password
-        </button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Password Recovery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-r from-blue-400 to-indigo-600 flex items-center justify-center">
+  <div class="w-full max-w-md bg-white p-8 rounded-xl shadow-lg">
+    <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Password Recovery</h2>
+
+    <form method="post" class="space-y-5">
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">Enter your email</label>
+        <input name="email" type="email" required
+               class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+               placeholder="your@email.com" />
+      </div>
+
+      <button type="submit"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition duration-200">
+        Recover Password
+      </button>
     </form>
-</div>
+  </div>
+</body>
+</html>

@@ -21,19 +21,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<h2 style="text-align: center; margin: 50 0 20px 0; color: #333; font-family: Arial, sans-serif;">Register</h2>
-<form method="post" style="max-width: 400px; margin: 50 auto; padding: 20px; background: #fff; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-    <div style="margin-bottom: 15px;">
-        <label style="display: block; margin-bottom: 5px; color: #555;">Username:</label>
-        <input name="username" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
-    </div>
-    <div style="margin-bottom: 15px;">
-        <label style="display: block; margin-bottom: 5px; color: #555;">Email:</label>
-        <input name="email" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
-    </div>
-    <div style="margin-bottom: 20px;">
-        <label style="display: block; margin-bottom: 5px; color: #555;">Password:</label>
-        <input name="password" type="password" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
-    </div>
-    <button type="submit" style="width: 100%; padding: 10px; background: #4285f4; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Register</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-r from-blue-400 to-indigo-600 flex items-center justify-center">
+  <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
+    <h2 class="text-3xl font-semibold text-center text-gray-800 mb-6">Register</h2>
+
+    <form method="post" class="space-y-5">
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">Username</label>
+        <input name="username" type="text" required
+               class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+      </div>
+
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">Email</label>
+        <input name="email" type="email" required
+               class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+      </div>
+
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">Password</label>
+        <input name="password" type="password" required
+               class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+      </div>
+
+      <button type="submit"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition duration-200">
+        Register
+      </button>
+
+      <a href="login.php"
+         class="block text-center w-full bg-gray-100 hover:bg-gray-200 text-blue-600 font-medium py-2 rounded-md transition duration-200">
+        Login
+      </a>
+    </form>
+  </div>
+</body>
+</html>
+
