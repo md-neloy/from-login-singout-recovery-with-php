@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         $newUser = "$username|$email|$password". PHP_EOL;
         file_put_contents("user.txt", $newUser, FILE_APPEND);
-        echo "Registration successful. <a href='login.php'>Login now</a>";
+        echo "Registration successful. <br> <a href='login.php'>Login now</a>";
     } else {
         echo "All fields are required.";
     }

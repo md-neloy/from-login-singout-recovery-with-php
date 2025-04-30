@@ -2,11 +2,12 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST["email"]);
 
-    $users = file("users.txt", FILE_IGNORE_NEW_LINES);
+    $users = file("user.txt", FILE_IGNORE_NEW_LINES);
     foreach ($users as $user) {
         list($u, $e, $p) = explode("|", $user);
         if ($e == $email) {
-            echo "Your password is: $p";
+            echo "Your password is: $p <br>";
+            echo "<a href='login.php'>login</a>";
             exit;
         }
     }
