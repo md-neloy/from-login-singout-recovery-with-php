@@ -1,22 +1,29 @@
 <?php
+$success = "";
+$error = "";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST["username"]);
     $email = trim($_POST["email"]);
     $password = trim($_POST["password"]);
 
     if ($username && $email && $password) {
-        $users = file("user.txt", FILE_IGNORE_NEW_LINES);
+        $users = file("user.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         foreach ($users as $user) {
             list($u, $e, $p) = explode("|", $user);
             if ($u == $username || $e == $email) {
-                die("Username or Email already exists.");
+                $error = "Username or Email already exists.";
+                break;
             }
         }
-        $newUser = "$username|$email|$password". PHP_EOL;
-        file_put_contents("user.txt", $newUser, FILE_APPEND);
-        echo "Registration successful. <br> <a href='login.php'>Login now</a>";
+
+        if (!$error) {
+            $newUser = "$username|$email|$password" . PHP_EOL;
+            file_put_contents("user.txt", $newUser, FILE_APPEND);
+            $success = "Registration successful.";
+        }
     } else {
-        echo "All fields are required.";
+        $error = "All fields are required.";
     }
 }
 ?>
@@ -32,6 +39,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body class="min-h-screen bg-gradient-to-r from-blue-400 to-indigo-600 flex items-center justify-center">
   <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
     <h2 class="text-3xl font-semibold text-center text-gray-800 mb-6">Register</h2>
+
+    <!-- Success Message -->
+    <?php if ($success): ?>
+      <div class="mb-4 p-4 bg-green-100 text-green-800 border border-green-300 rounded-md">
+        <?= htmlspecialchars($success) ?> 
+        <a href="login.php" class="text-blue-600 underline ml-2">Login now</a>
+      </div>
+    <?php endif; ?>
+
+    <!-- Error Message -->
+    <?php if ($error): ?>
+      <div class="mb-4 p-4 bg-red-100 text-red-800 border border-red-300 rounded-md">
+        <?= htmlspecialchars($error) ?>
+      </div>
+    <?php endif; ?>
 
     <form method="post" class="space-y-5">
       <div>
